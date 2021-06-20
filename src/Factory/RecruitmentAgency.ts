@@ -1,4 +1,4 @@
-import { Employee } from "./employees/Employee";
+import { Employee } from "../assets/employees/Employee";
 
 export class RecruitmentAgency {
   objConstuctors: object;
