@@ -1,6 +1,6 @@
-import { IWorker } from "./Worker";
+import { Employee } from "./Employee";
 
-export class Salesman extends IWorker {
+export class Salesman extends Employee {
   constructor(skills: string[], benefits: string[]) {
     super();
     this.skills = ["selling"].concat(skills);

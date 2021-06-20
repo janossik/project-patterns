@@ -1,9 +1,11 @@
+import { Employee } from "./employees/Employee";
+
 export class SoftwareHouse {
-  employees: any;
+  employees: Employee[];
   constructor() {
     this.employees = [];
   }
-  hireEmployee(employe: any) {
+  hireEmployee(employe: Employee) {
     this.employees.push(employe);
   }
 }

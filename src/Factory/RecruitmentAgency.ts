@@ -1,20 +1,20 @@
-import { BusinessAnalyst } from "./employees/BusinessAnalyst";
-import { Developer } from "./employees/Developer";
-import { Salesman } from "./employees/Salesman";
-
-type TypeRoles = "dev" | "sale" | "ba";
+import { Employee } from "./employees/Employee";
 
 export class RecruitmentAgency {
-  getStaffMember(role: TypeRoles, skills: string[], benefits: string[]) {
-    switch (role.toLocaleLowerCase()) {
-      case "dev":
-        return new Developer(skills, benefits);
-      case "sale":
-        return new Salesman(skills, benefits);
-      case "ba":
-        return new BusinessAnalyst(skills, benefits);
-      default:
-        throw new Error(`There are no vacancies for the position of a ${role}`);
+  objConstuctors: object;
+  constructor() {
+    this.objConstuctors = {};
+  }
+  register<Type>(role: string, constructor: Type) {
+    this.objConstuctors[role] = constructor;
+  }
+  getStaffMember(role: string, skills: string[], benefits: string[]): Employee {
+    let objConstructor = this.objConstuctors[role];
+    let member: Employee;
+    if (!objConstructor) {
+      throw new Error("This occupation has not been registered");
     }
+    member = new objConstructor(skills, benefits);
+    return member;
   }
 }
